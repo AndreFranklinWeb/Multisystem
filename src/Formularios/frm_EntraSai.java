@@ -31,6 +31,7 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
         initComponents();
         conexao = ModuloConexao.Conector();
         
+        
     }
 
     //---------------------------------------------------------------------------------------------------------------------------------
@@ -52,7 +53,7 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
             
             //VALIDAÇÃO DOS CAMPOS OBRIGATÓRIOS
 
-            if ((txt_patrominioPS.getText().isEmpty()) || (txt_defeito.getText().isEmpty()) || (txt_chamado.getText().isEmpty())) {
+            if ((txt_patrominioPS.getText().isEmpty()) || (txt_gerencia.getText().isEmpty()) || (txt_defeito.getText().isEmpty())) {
                 JOptionPane.showMessageDialog(null, "Preencha todos os campos obrigatórios!");  
 
             } else {
@@ -70,6 +71,7 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
                     tb_entsaiEquip.setModel(new DefaultTableModel(null, new String[]{"ID", "PATRIMÔNIO", "GERENCIA", "TIPO", "STATUS", "Nº CHAMADO", "DEFEITO", "DATA ENTRADA", "DATA SAIDA"}));
                     txt_patrominioPS.setText(null);                                      
                     txt_patrominioPS.requestFocus();//Aponta cursor para o campo matricula.
+                    
                 }
             }
         } catch (Exception e) {
@@ -141,7 +143,7 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
             pst.setString(9, txt_idPS.getText());
             
 
-            if ((txt_patrominioPS.getText().isEmpty()) || (txt_defeito.getText().isEmpty()) || (txt_chamado.getText().isEmpty())) {
+            if ((txt_patrominioPS.getText().isEmpty()) || (txt_gerencia.getText().isEmpty()) || (txt_defeito.getText().isEmpty())) {
                 JOptionPane.showMessageDialog(null, "Preencha todos os campos obrigatórios!");
 
             } else {
@@ -239,7 +241,6 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         txt_patrominioPS = new javax.swing.JFormattedTextField();
-        txt_defeito = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tb_entsaiEquip = new javax.swing.JTable();
         jLabel9 = new javax.swing.JLabel();
@@ -255,6 +256,8 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
         txt_gerencia = new javax.swing.JTextField();
         txt_dataSaida = new javax.swing.JFormattedTextField();
         txt_dataEntrada = new javax.swing.JFormattedTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txt_defeito = new javax.swing.JTextArea();
 
         setClosable(true);
         setIconifiable(true);
@@ -278,7 +281,7 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btn_alterarPS);
-        btn_alterarPS.setBounds(310, 420, 90, 40);
+        btn_alterarPS.setBounds(360, 440, 90, 40);
 
         btn_cancelarPS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Cancelar.png"))); // NOI18N
         btn_cancelarPS.setToolTipText("Cancelar");
@@ -293,7 +296,7 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btn_cancelarPS);
-        btn_cancelarPS.setBounds(460, 420, 100, 40);
+        btn_cancelarPS.setBounds(510, 440, 100, 40);
 
         btn_removerPS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/excluir.png"))); // NOI18N
         btn_removerPS.setToolTipText("Excluir");
@@ -309,7 +312,7 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btn_removerPS);
-        btn_removerPS.setBounds(630, 420, 100, 40);
+        btn_removerPS.setBounds(680, 440, 100, 40);
 
         btn_novoPS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/adicionar.png"))); // NOI18N
         btn_novoPS.setToolTipText("Novo");
@@ -319,11 +322,11 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btn_novoPS);
-        btn_novoPS.setBounds(170, 420, 90, 40);
+        btn_novoPS.setBounds(220, 440, 90, 40);
 
-        jLabel4.setText("* Defeito do Equipamento");
+        jLabel4.setText("* Defeito do equipamento e solução do técnico");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(290, 130, 220, 14);
+        jLabel4.setBounds(290, 130, 340, 14);
 
         jLabel5.setText("Tipo de  Equipamento");
         getContentPane().add(jLabel5);
@@ -352,7 +355,7 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel7);
         jLabel7.setBounds(640, 40, 130, 110);
 
-        jLabel8.setText("Gerência");
+        jLabel8.setText("* Gerência");
         getContentPane().add(jLabel8);
         jLabel8.setBounds(110, 70, 160, 14);
 
@@ -366,15 +369,6 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
         getContentPane().add(txt_patrominioPS);
         txt_patrominioPS.setBounds(10, 90, 80, 30);
 
-        txt_defeito.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txt_defeito.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_defeitoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txt_defeito);
-        txt_defeito.setBounds(290, 150, 340, 30);
-
         tb_entsaiEquip.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null},
@@ -387,13 +381,14 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, false, false, false, false, false, false, true, true
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        tb_entsaiEquip.getTableHeader().setReorderingAllowed(false);
         tb_entsaiEquip.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tb_entsaiEquipMouseClicked(evt);
@@ -402,10 +397,18 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
         jScrollPane2.setViewportView(tb_entsaiEquip);
         if (tb_entsaiEquip.getColumnModel().getColumnCount() > 0) {
             tb_entsaiEquip.getColumnModel().getColumn(0).setResizable(false);
+            tb_entsaiEquip.getColumnModel().getColumn(1).setResizable(false);
+            tb_entsaiEquip.getColumnModel().getColumn(2).setResizable(false);
+            tb_entsaiEquip.getColumnModel().getColumn(3).setResizable(false);
+            tb_entsaiEquip.getColumnModel().getColumn(4).setResizable(false);
+            tb_entsaiEquip.getColumnModel().getColumn(5).setResizable(false);
+            tb_entsaiEquip.getColumnModel().getColumn(6).setResizable(false);
+            tb_entsaiEquip.getColumnModel().getColumn(7).setResizable(false);
+            tb_entsaiEquip.getColumnModel().getColumn(8).setResizable(false);
         }
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(10, 260, 880, 140);
+        jScrollPane2.setBounds(10, 260, 990, 160);
 
         jLabel9.setText("Pesquisar");
         getContentPane().add(jLabel9);
@@ -455,7 +458,7 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel13);
         jLabel13.setBounds(140, 190, 130, 14);
 
-        jLabel14.setText("* Número do Chamado");
+        jLabel14.setText("Número do Chamado");
         getContentPane().add(jLabel14);
         jLabel14.setBounds(10, 130, 230, 14);
 
@@ -489,7 +492,16 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
         getContentPane().add(txt_dataEntrada);
         txt_dataEntrada.setBounds(10, 210, 109, 30);
 
-        setBounds(0, 0, 921, 506);
+        txt_defeito.setColumns(20);
+        txt_defeito.setLineWrap(true);
+        txt_defeito.setRows(5);
+        txt_defeito.setWrapStyleWord(true);
+        jScrollPane1.setViewportView(txt_defeito);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(290, 150, 340, 90);
+
+        setBounds(0, 0, 1028, 520);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_alterarPSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alterarPSActionPerformed
@@ -547,10 +559,6 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
         SetarCamposEquip();
     }//GEN-LAST:event_tb_entsaiEquipMouseClicked
 
-    private void txt_defeitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_defeitoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_defeitoActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_alterarPS;
@@ -573,12 +581,13 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tb_entsaiEquip;
     private javax.swing.JTextField txt_chamado;
     private javax.swing.JFormattedTextField txt_dataEntrada;
     private javax.swing.JFormattedTextField txt_dataSaida;
-    private javax.swing.JTextField txt_defeito;
+    private javax.swing.JTextArea txt_defeito;
     private javax.swing.JTextField txt_gerencia;
     private javax.swing.JFormattedTextField txt_idPS;
     private javax.swing.JFormattedTextField txt_patrominioPS;
