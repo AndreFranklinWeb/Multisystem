@@ -132,10 +132,15 @@
     <Component class="javax.swing.JComboBox" name="cbb_tipoEquip">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="3">
+          <StringArray count="8">
             <StringItem index="0" value="Selecione"/>
             <StringItem index="1" value="Desktop"/>
             <StringItem index="2" value="Notebook"/>
+            <StringItem index="3" value="Estabilizador"/>
+            <StringItem index="4" value="Nobreak"/>
+            <StringItem index="5" value="Tablet"/>
+            <StringItem index="6" value="Smartphone"/>
+            <StringItem index="7" value="Monitor"/>
           </StringArray>
         </Property>
       </Properties>

@@ -335,7 +335,7 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel5);
         jLabel5.setBounds(290, 70, 140, 14);
 
-        cbb_tipoEquip.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Desktop", "Notebook" }));
+        cbb_tipoEquip.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Desktop", "Notebook", "Estabilizador", "Nobreak", "Tablet", "Smartphone", "Monitor" }));
         getContentPane().add(cbb_tipoEquip);
         cbb_tipoEquip.setBounds(290, 90, 140, 30);
 
