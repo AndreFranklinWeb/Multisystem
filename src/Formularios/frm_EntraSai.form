@@ -220,14 +220,17 @@
     </Component>
     <Component class="javax.swing.JFormattedTextField" name="txt_patrominioPS">
       <Properties>
-        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-          <Format format="######" subtype="-1" type="5"/>
+        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+          <Format format="000000" subtype="-1" type="0"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="2"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="12" style="1"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_patrominioPSActionPerformed"/>
+      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="10" y="90" width="80" height="30"/>
@@ -447,7 +450,7 @@
     <Component class="javax.swing.JFormattedTextField" name="txt_dataSaida">
       <Properties>
         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-          <Format format="##/##/##" subtype="-1" type="5"/>
+          <Format format="##/##/####" subtype="-1" type="5"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="2"/>
       </Properties>
@@ -460,7 +463,7 @@
     <Component class="javax.swing.JFormattedTextField" name="txt_dataEntrada">
       <Properties>
         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-          <Format format="##/##/##" subtype="-1" type="5"/>
+          <Format format="##/##/####" subtype="-1" type="5"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="2"/>
       </Properties>

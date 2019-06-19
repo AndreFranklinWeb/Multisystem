@@ -13,7 +13,6 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 
-
 /**
  *
  * @author Andre Franklin
@@ -29,7 +28,7 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
      */
     public frm_EntraSai() {
         initComponents();
-        conexao = ModuloConexao.Conector();
+        conexao = ModuloConexao.Conector();   
         
         
     }
@@ -38,7 +37,7 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
     //Método adicionar novo usuário
     private void adicionar() {
         String sql = "insert into tb_entrasai(patri_equip, gerencia_equip, tipo_equip, status_equip, chamado_equip, defeito_equip, data_entrada_equip, data_saida_equip) values(?,?,?,?,?,?,?,?)";
-
+                        
         try {
             pst = conexao.prepareStatement(sql);            
             
@@ -52,6 +51,7 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
             pst.setString(8, txt_dataSaida.getText());            
             
             //VALIDAÇÃO DOS CAMPOS OBRIGATÓRIOS
+        
 
             if ((txt_patrominioPS.getText().isEmpty()) || (txt_gerencia.getText().isEmpty()) || (txt_defeito.getText().isEmpty())) {
                 JOptionPane.showMessageDialog(null, "Preencha todos os campos obrigatórios!");  
@@ -62,6 +62,7 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
                 if (adicionado > 0) {
                     JOptionPane.showMessageDialog(null, "Registro adicionado com sucesso!");
 
+                    txt_idPS.setText(null);
                     txt_patrominioPS.setText(null);
                     txt_gerencia.setText(null);
                     txt_chamado.setText(null);
@@ -69,9 +70,9 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
                     txt_dataEntrada.setText(null);  
                     txt_dataSaida.setText(null);
                     tb_entsaiEquip.setModel(new DefaultTableModel(null, new String[]{"ID", "PATRIMÔNIO", "GERENCIA", "TIPO", "STATUS", "Nº CHAMADO", "DEFEITO", "DATA ENTRADA", "DATA SAIDA"}));
-                    txt_patrominioPS.setText(null);                                      
-                    txt_patrominioPS.requestFocus();//Aponta cursor para o campo matricula.
-                    
+                    //txt_patrominioPS.requestFocus();//Aponta cursor para o campo matricula.
+                    txt_pesquisarPS.requestFocus();//Aponta cursor para o campo matricula.
+                    txt_pesquisarPS.setText(null); 
                 }
             }
         } catch (Exception e) {
@@ -153,7 +154,7 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
                 if (adicionado > 0) {
                     JOptionPane.showMessageDialog(null, "Registro alterado com sucesso!");
                                         
-                
+                txt_idPS.setText(null);
                 txt_patrominioPS.setText(null);
                 txt_gerencia.setText(null);
                 txt_chamado.setText(null);
@@ -161,8 +162,9 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
                 txt_dataEntrada.setText(null);  
                 txt_dataSaida.setText(null);
                 tb_entsaiEquip.setModel(new DefaultTableModel(null, new String[]{"ID", "PATRIMÔNIO", "GERENCIA", "TIPO", "STATUS", "Nº CHAMADO", "DEFEITO", "DATA ENTRADA", "DATA SAIDA"}));
-                txt_patrominioPS.setText(null);                                      
-                txt_patrominioPS.requestFocus();//Aponta cursor para o campo matricula.
+                //txt_patrominioPS.requestFocus();//Aponta cursor para o campo matricula.
+                txt_pesquisarPS.requestFocus();//Aponta cursor para o campo matricula.
+                txt_pesquisarPS.setText(null);
                 
                 }
             }
@@ -184,9 +186,10 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
         txt_dataEntrada.setText(null);  
         txt_dataSaida.setText(null);
         tb_entsaiEquip.setModel(new DefaultTableModel(null, new String[]{"ID", "PATRIMÔNIO", "GERENCIA", "TIPO", "STATUS", "Nº CHAMADO", "DEFEITO", "DATA ENTRADA", "DATA SAIDA"}));
+        //txt_patrominioPS.requestFocus();//Aponta cursor para o campo matricula.      
+        txt_pesquisarPS.requestFocus();//Aponta cursor para o campo matricula.
         txt_pesquisarPS.setText(null);
-        txt_patrominioPS.requestFocus();//Aponta cursor para o campo matricula.      
-
+        
     }
 
     //---------------------------------------------------------------------------------------------------------------------------------    
@@ -204,7 +207,7 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
                 if (apagado > 0) {
                     JOptionPane.showMessageDialog(null, "Dados removidos com suscesso!");
 
-                    //txt_Pesq_usuario.setText(null);
+                    txt_idPS.setText(null);
                     txt_patrominioPS.setText(null);
                     txt_gerencia.setText(null);
                     txt_chamado.setText(null);
@@ -212,9 +215,9 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
                     txt_dataEntrada.setText(null);  
                     txt_dataSaida.setText(null);
                     tb_entsaiEquip.setModel(new DefaultTableModel(null, new String[]{"ID", "PATRIMÔNIO", "GERENCIA", "TIPO", "STATUS", "Nº CHAMADO", "DEFEITO", "DATA ENTRADA", "DATA SAIDA"}));
+                    //txt_patrominioPS.requestFocus();//Aponta cursor para o campo matricula.
+                    txt_pesquisarPS.requestFocus();//Aponta cursor para o campo matricula.
                     txt_pesquisarPS.setText(null);
-                    txt_patrominioPS.requestFocus();//Aponta cursor para o campo matricula.
-
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
@@ -359,13 +362,14 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel8);
         jLabel8.setBounds(110, 70, 160, 14);
 
-        try {
-            txt_patrominioPS.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("######")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        txt_patrominioPS.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("000000"))));
         txt_patrominioPS.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txt_patrominioPS.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txt_patrominioPS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_patrominioPSActionPerformed(evt);
+            }
+        });
         getContentPane().add(txt_patrominioPS);
         txt_patrominioPS.setBounds(10, 90, 80, 30);
 
@@ -475,7 +479,7 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
         txt_gerencia.setBounds(110, 90, 160, 30);
 
         try {
-            txt_dataSaida.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/##")));
+            txt_dataSaida.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -484,7 +488,7 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
         txt_dataSaida.setBounds(140, 210, 109, 30);
 
         try {
-            txt_dataEntrada.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/##")));
+            txt_dataEntrada.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -558,6 +562,10 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         SetarCamposEquip();
     }//GEN-LAST:event_tb_entsaiEquipMouseClicked
+
+    private void txt_patrominioPSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_patrominioPSActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_patrominioPSActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

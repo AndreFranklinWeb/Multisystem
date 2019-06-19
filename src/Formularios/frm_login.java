@@ -138,12 +138,12 @@ public class frm_login extends javax.swing.JFrame {
         getContentPane().add(jLabel4);
         jLabel4.setBounds(10, 10, 340, 190);
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Versão 1.0");
+        jLabel5.setText("Junho 2019 - Versão 1.2");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(264, 400, 90, 20);
+        jLabel5.setBounds(230, 410, 130, 20);
 
         setSize(new java.awt.Dimension(375, 465));
         setLocationRelativeTo(null);
