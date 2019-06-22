@@ -107,6 +107,11 @@ public class frm_login extends javax.swing.JFrame {
         getContentPane().add(btn_acessarlog);
         btn_acessarlog.setBounds(80, 350, 80, 30);
 
+        txt_senhalog.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_senhalogActionPerformed(evt);
+            }
+        });
         txt_senhalog.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txt_senhalogKeyPressed(evt);
@@ -141,7 +146,7 @@ public class frm_login extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Junho 2019 - Versão 1.2");
+        jLabel5.setText("Versão 1.2 - Junho 2019");
         getContentPane().add(jLabel5);
         jLabel5.setBounds(230, 410, 130, 20);
 
@@ -163,6 +168,11 @@ public class frm_login extends javax.swing.JFrame {
         // Abrir teclando enter           
         
     }//GEN-LAST:event_txt_senhalogKeyPressed
+
+    private void txt_senhalogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_senhalogActionPerformed
+        // TODO add your handling code here:
+        logar();
+    }//GEN-LAST:event_txt_senhalogActionPerformed
 
     /**
      * @param args the command line arguments

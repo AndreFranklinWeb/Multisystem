@@ -44,6 +44,7 @@
     </Component>
     <Component class="javax.swing.JPasswordField" name="txt_senhalog">
       <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_senhalogActionPerformed"/>
         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_senhalogKeyPressed"/>
       </Events>
       <Constraints>
@@ -125,7 +126,7 @@
           <Color blue="ff" green="33" red="33" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Junho 2019 - Vers&#xe3;o 1.2"/>
+        <Property name="text" type="java.lang.String" value="Vers&#xe3;o 1.2 - Junho 2019"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

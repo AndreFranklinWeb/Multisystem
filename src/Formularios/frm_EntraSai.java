@@ -1,14 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Formularios;
 
 import Dao.ModuloConexao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+//import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
@@ -28,8 +25,7 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
      */
     public frm_EntraSai() {
         initComponents();
-        conexao = ModuloConexao.Conector();   
-        
+        conexao = ModuloConexao.Conector(); 
         
     }
 
@@ -55,7 +51,18 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
 
             if ((txt_patrominioPS.getText().isEmpty()) || (txt_gerencia.getText().isEmpty()) || (txt_defeito.getText().isEmpty())) {
                 JOptionPane.showMessageDialog(null, "Preencha todos os campos obrigatórios!");  
-
+                
+                    txt_pesquisarPS.requestFocus();//Aponta cursor para o campo matricula.
+                    txt_idPS.setText(null);
+                    txt_patrominioPS.setText(null);
+                    txt_gerencia.setText(null);
+                    txt_chamado.setText(null);
+                    txt_defeito.setText(null);
+                    txt_dataEntrada.setText(null);  
+                    txt_dataSaida.setText(null);
+                    txt_pesquisarPS.setText(null); 
+                    txt_pesquisarPS.requestFocus();//Aponta cursor para o campo matricula.
+                
             } else {
                 int adicionado = pst.executeUpdate();
 
@@ -70,9 +77,9 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
                     txt_dataEntrada.setText(null);  
                     txt_dataSaida.setText(null);
                     tb_entsaiEquip.setModel(new DefaultTableModel(null, new String[]{"ID", "PATRIMÔNIO", "GERENCIA", "TIPO", "STATUS", "Nº CHAMADO", "DEFEITO", "DATA ENTRADA", "DATA SAIDA"}));
-                    //txt_patrominioPS.requestFocus();//Aponta cursor para o campo matricula.
-                    txt_pesquisarPS.requestFocus();//Aponta cursor para o campo matricula.
                     txt_pesquisarPS.setText(null); 
+                    txt_pesquisarPS.requestFocus();//Aponta cursor para o campo matricula.
+                    
                 }
             }
         } catch (Exception e) {
@@ -162,9 +169,9 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
                 txt_dataEntrada.setText(null);  
                 txt_dataSaida.setText(null);
                 tb_entsaiEquip.setModel(new DefaultTableModel(null, new String[]{"ID", "PATRIMÔNIO", "GERENCIA", "TIPO", "STATUS", "Nº CHAMADO", "DEFEITO", "DATA ENTRADA", "DATA SAIDA"}));
-                //txt_patrominioPS.requestFocus();//Aponta cursor para o campo matricula.
-                txt_pesquisarPS.requestFocus();//Aponta cursor para o campo matricula.
                 txt_pesquisarPS.setText(null);
+                txt_pesquisarPS.requestFocus();//Aponta cursor para o campo matricula.
+                
                 
                 }
             }
@@ -186,9 +193,9 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
         txt_dataEntrada.setText(null);  
         txt_dataSaida.setText(null);
         tb_entsaiEquip.setModel(new DefaultTableModel(null, new String[]{"ID", "PATRIMÔNIO", "GERENCIA", "TIPO", "STATUS", "Nº CHAMADO", "DEFEITO", "DATA ENTRADA", "DATA SAIDA"}));
-        //txt_patrominioPS.requestFocus();//Aponta cursor para o campo matricula.      
-        txt_pesquisarPS.requestFocus();//Aponta cursor para o campo matricula.
         txt_pesquisarPS.setText(null);
+        txt_pesquisarPS.requestFocus();//Aponta cursor para o campo matricula.
+        
         
     }
 
@@ -196,7 +203,7 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
     //Método remover usuário
     private void remover() {
 
-        int confirma = JOptionPane.showConfirmDialog(null, " Tem certeza que deseja remover este Usuário?", "Atenção", JOptionPane.YES_NO_OPTION);
+        int confirma = JOptionPane.showConfirmDialog(null, " Tem certeza que deseja remover este registro?", "Atenção", JOptionPane.YES_NO_OPTION);
         if (confirma == JOptionPane.YES_OPTION) {
             String sql = "delete from tb_entrasai where id_equip=?";
 
@@ -205,7 +212,7 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
                 pst.setString(1, txt_idPS.getText());
                 int apagado = pst.executeUpdate();
                 if (apagado > 0) {
-                    JOptionPane.showMessageDialog(null, "Dados removidos com suscesso!");
+                    JOptionPane.showMessageDialog(null, "Registro removido com sucesso!");
 
                     txt_idPS.setText(null);
                     txt_patrominioPS.setText(null);
@@ -216,8 +223,9 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
                     txt_dataSaida.setText(null);
                     tb_entsaiEquip.setModel(new DefaultTableModel(null, new String[]{"ID", "PATRIMÔNIO", "GERENCIA", "TIPO", "STATUS", "Nº CHAMADO", "DEFEITO", "DATA ENTRADA", "DATA SAIDA"}));
                     //txt_patrominioPS.requestFocus();//Aponta cursor para o campo matricula.
-                    txt_pesquisarPS.requestFocus();//Aponta cursor para o campo matricula.
                     txt_pesquisarPS.setText(null);
+                    txt_pesquisarPS.requestFocus();//Aponta cursor para o campo matricula.
+                    
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
@@ -363,7 +371,7 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
         jLabel8.setBounds(110, 70, 160, 14);
 
         txt_patrominioPS.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("000000"))));
-        txt_patrominioPS.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txt_patrominioPS.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_patrominioPS.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txt_patrominioPS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -460,7 +468,7 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
 
         jLabel13.setText("Data de saida");
         getContentPane().add(jLabel13);
-        jLabel13.setBounds(140, 190, 130, 14);
+        jLabel13.setBounds(150, 190, 120, 14);
 
         jLabel14.setText("Número do Chamado");
         getContentPane().add(jLabel14);
@@ -472,7 +480,7 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
 
         jLabel15.setText("Data de Entrada");
         getContentPane().add(jLabel15);
-        jLabel15.setBounds(10, 190, 230, 14);
+        jLabel15.setBounds(10, 190, 120, 14);
 
         txt_gerencia.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         getContentPane().add(txt_gerencia);
@@ -485,7 +493,7 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
         }
         txt_dataSaida.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         getContentPane().add(txt_dataSaida);
-        txt_dataSaida.setBounds(140, 210, 109, 30);
+        txt_dataSaida.setBounds(150, 210, 120, 30);
 
         try {
             txt_dataEntrada.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -494,7 +502,7 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
         }
         txt_dataEntrada.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         getContentPane().add(txt_dataEntrada);
-        txt_dataEntrada.setBounds(10, 210, 109, 30);
+        txt_dataEntrada.setBounds(10, 210, 120, 30);
 
         txt_defeito.setColumns(20);
         txt_defeito.setLineWrap(true);
