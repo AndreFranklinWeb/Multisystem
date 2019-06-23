@@ -25,11 +25,11 @@ public class frm_menu extends javax.swing.JFrame {
     public frm_menu() {
         initComponents();
     }
-    
-    
+        
     /**
 
      */
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -41,17 +41,17 @@ public class frm_menu extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        MenCadastro = new javax.swing.JMenu();
         MenUsuario = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        MenuEntraSai = new javax.swing.JMenuItem();
+        MenuHistorico = new javax.swing.JMenuItem();
         MenRel = new javax.swing.JMenu();
         MenRelCli = new javax.swing.JMenuItem();
         MenOpc = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        MenSobre = new javax.swing.JMenuItem();
-        MenSair = new javax.swing.JMenuItem();
+        MenuAjuda = new javax.swing.JMenuItem();
+        MenuSobre = new javax.swing.JMenuItem();
+        MenuSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("MultiSystem");
@@ -94,7 +94,12 @@ public class frm_menu extends javax.swing.JFrame {
 
         jMenuBar1.setAlignmentX(0.0F);
 
-        jMenu1.setText("Cadastros");
+        MenCadastro.setText("Cadastro");
+        MenCadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenCadastroActionPerformed(evt);
+            }
+        });
 
         MenUsuario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
         MenUsuario.setText("Usuários");
@@ -104,36 +109,34 @@ public class frm_menu extends javax.swing.JFrame {
                 MenUsuarioActionPerformed(evt);
             }
         });
-        jMenu1.add(MenUsuario);
+        MenCadastro.add(MenUsuario);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(MenCadastro);
 
         jMenu2.setText("Manutenção");
 
-        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
-        jMenuItem2.setText("Entrada e Saida de  Equip.");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        MenuEntraSai.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
+        MenuEntraSai.setText("Entrada e Saida de  Equip.");
+        MenuEntraSai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                MenuEntraSaiActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem2);
+        jMenu2.add(MenuEntraSai);
 
-        jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, 0));
-        jMenuItem4.setText("Histórico de Equip.");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        MenuHistorico.setText("Histórico de Equip.");
+        MenuHistorico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                MenuHistoricoActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem4);
+        jMenu2.add(MenuHistorico);
 
         jMenuBar1.add(jMenu2);
 
         MenRel.setText("Relatórios");
         MenRel.setEnabled(false);
 
-        MenRelCli.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, 0));
         MenRelCli.setText("Rel.Patrimônios");
         MenRel.add(MenRelCli);
 
@@ -146,32 +149,30 @@ public class frm_menu extends javax.swing.JFrame {
             }
         });
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F10, 0));
-        jMenuItem1.setText("Ajuda");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        MenuAjuda.setText("Ajuda");
+        MenuAjuda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                MenuAjudaActionPerformed(evt);
             }
         });
-        MenOpc.add(jMenuItem1);
+        MenOpc.add(MenuAjuda);
 
-        MenSobre.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F11, 0));
-        MenSobre.setText("Sobre");
-        MenSobre.addActionListener(new java.awt.event.ActionListener() {
+        MenuSobre.setText("Sobre");
+        MenuSobre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenSobreActionPerformed(evt);
+                MenuSobreActionPerformed(evt);
             }
         });
-        MenOpc.add(MenSobre);
+        MenOpc.add(MenuSobre);
 
-        MenSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F12, 0));
-        MenSair.setText("Sair");
-        MenSair.addActionListener(new java.awt.event.ActionListener() {
+        MenuSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F12, 0));
+        MenuSair.setText("Sair");
+        MenuSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenSairActionPerformed(evt);
+                MenuSairActionPerformed(evt);
             }
         });
-        MenOpc.add(MenSair);
+        MenOpc.add(MenuSair);
 
         jMenuBar1.add(MenOpc);
 
@@ -188,7 +189,7 @@ public class frm_menu extends javax.swing.JFrame {
         DateFormat formatador = DateFormat.getDateInstance(DateFormat.SHORT);
         lbl_dataMenu.setText(formatador.format(data));
 
-
+        
     }//GEN-LAST:event_formWindowActivated
 
     private void MenOpcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenOpcActionPerformed
@@ -196,20 +197,21 @@ public class frm_menu extends javax.swing.JFrame {
 
     }//GEN-LAST:event_MenOpcActionPerformed
 
-    private void MenSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenSobreActionPerformed
+    private void MenuSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuSobreActionPerformed
         // Chamar o frm_Sobre
         frm_sobre sobre = new frm_sobre();
         sobre.setVisible(true);
+        desktop.add(sobre);
 
-    }//GEN-LAST:event_MenSobreActionPerformed
+    }//GEN-LAST:event_MenuSobreActionPerformed
 
-    private void MenSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenSairActionPerformed
+    private void MenuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuSairActionPerformed
         // Sair do sistema
         int sair = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja sair do Sistema?", "Atenção", JOptionPane.YES_NO_OPTION);
         if (sair == JOptionPane.YES_OPTION) {
             System.exit(0);
         }
-    }//GEN-LAST:event_MenSairActionPerformed
+    }//GEN-LAST:event_MenuSairActionPerformed
 
     private void MenUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenUsuarioActionPerformed
         // a linha abaixo vai  abrir a tela usuario dentro do Desktop Pane.
@@ -218,20 +220,27 @@ public class frm_menu extends javax.swing.JFrame {
         desktop.add(usuario);
     }//GEN-LAST:event_MenUsuarioActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void MenuAjudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuAjudaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+        frm_ajuda ajuda = new frm_ajuda();
+        ajuda.setVisible(true);
+        desktop.add(ajuda);
+    }//GEN-LAST:event_MenuAjudaActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void MenuEntraSaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuEntraSaiActionPerformed
         // Abri o formulario de entrada e saida de equip.
         frm_EntraSai EntradaSaida = new frm_EntraSai();
         EntradaSaida.setVisible(true);
         desktop.add(EntradaSaida);        
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_MenuEntraSaiActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void MenuHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuHistoricoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_MenuHistoricoActionPerformed
+
+    private void MenCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenCadastroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MenCadastroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -269,22 +278,22 @@ public class frm_menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu MenCadastro;
     private javax.swing.JMenu MenOpc;
     public static javax.swing.JMenu MenRel;
     private javax.swing.JMenuItem MenRelCli;
-    private javax.swing.JMenuItem MenSair;
-    private javax.swing.JMenuItem MenSobre;
     public static javax.swing.JMenuItem MenUsuario;
+    private javax.swing.JMenuItem MenuAjuda;
+    private javax.swing.JMenuItem MenuEntraSai;
+    private javax.swing.JMenuItem MenuHistorico;
+    private javax.swing.JMenuItem MenuSair;
+    private javax.swing.JMenuItem MenuSobre;
     private javax.swing.JDesktopPane desktop;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JLabel lbl_dataMenu;
     public static javax.swing.JLabel lbl_usuarioMenu;
     // End of variables declaration//GEN-END:variables

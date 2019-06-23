@@ -40,7 +40,7 @@ public class frm_sobre extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Multisystem - Junho 2019 - Versão 1.2");
+        jLabel1.setText("Versão 1.2 - Junho 2019");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 230, 470, 30);
 

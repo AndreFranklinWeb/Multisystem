@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Formularios;
 
 import Dao.ModuloConexao;
@@ -16,18 +12,18 @@ import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 
 /*
-    CRUD DA TABELA USUÁRIOS
-    @author Andre Franklin
- */
+  CRUD DA TABELA USUÁRIOS
+  @author Andre Franklin
+*/
 public class frm_usuario extends javax.swing.JInternalFrame {
 
     Connection conexao = null;
     PreparedStatement pst = null;
     ResultSet rs = null;
 
-    /**
-     * Creates new form frm_usuario
-     */
+/**
+ * Creates new form frm_usuario
+*/
     public frm_usuario() {
         initComponents();
         conexao = ModuloConexao.Conector();
@@ -49,7 +45,7 @@ public class frm_usuario extends javax.swing.JInternalFrame {
             if ((txt_matriculaUsu.getText().isEmpty()) || (txt_loginUsu.getText().isEmpty()) || (txt_senhaUsu.getText().isEmpty())) {
                 JOptionPane.showMessageDialog(null, "Preencha todos os campos obrigatórios!");
 
-                txt_matriculaUsu.requestFocus();
+                txt_Pesq_usuario.requestFocus();
                 txt_matriculaUsu.setText(null);
                 txt_loginUsu.setText(null);
                 txt_senhaUsu.setText(null);
@@ -65,7 +61,8 @@ public class frm_usuario extends javax.swing.JInternalFrame {
                     txt_loginUsu.setText(null);
                     txt_senhaUsu.setText(null);
                     tb_usuario.setModel(new DefaultTableModel(null, new String[]{"ID", "MATRICULA", "LOGIN", "SENHA", "PERFIL"}));
-                    txt_matriculaUsu.requestFocus();//Aponta cursor para o campo matricula.
+                    txt_Pesq_usuario.setText(null);
+                    txt_Pesq_usuario.requestFocus();//Aponta cursor para o campo matricula.
                 }
             }
         } catch (Exception e) {
@@ -133,14 +130,14 @@ public class frm_usuario extends javax.swing.JInternalFrame {
 
                 if (adicionado > 0) {
                     JOptionPane.showMessageDialog(null, "Dados do usuário alterados com sucesso!");
-
+                    
+                     
                     txt_matriculaUsu.setText(null);
                     txt_loginUsu.setText(null);
                     txt_senhaUsu.setText(null);
                     tb_usuario.setModel(new DefaultTableModel(null, new String[]{"ID", "MATRICULA", "LOGIN", "SENHA", "PERFIL"}));
                     txt_Pesq_usuario.setText(null);
-                    txt_matriculaUsu.requestFocus();//Aponta cursor para o campo matricula.  
-                    
+                    txt_Pesq_usuario.requestFocus();//Aponta cursor para o campo matricula. 
                 }
             }
         } catch (Exception e) {
@@ -158,7 +155,7 @@ public class frm_usuario extends javax.swing.JInternalFrame {
         txt_senhaUsu.setText(null);
         tb_usuario.setModel(new DefaultTableModel(null, new String[]{"ID", "MATRICULA", "LOGIN", "SENHA", "PERFIL"}));
         txt_Pesq_usuario.setText(null);
-        txt_matriculaUsu.requestFocus();//Aponta cursor para o campo matricula.
+        txt_Pesq_usuario.requestFocus();//Aponta cursor para o campo matricula.
 
     }
 
@@ -410,7 +407,7 @@ public class frm_usuario extends javax.swing.JInternalFrame {
         getContentPane().add(txt_IdUsu);
         txt_IdUsu.setBounds(470, 30, 110, 30);
 
-        setBounds(0, 0, 596, 431);
+        setBounds(0, 0, 602, 431);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_alterarUsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alterarUsuActionPerformed
@@ -454,6 +451,7 @@ public class frm_usuario extends javax.swing.JInternalFrame {
 
     private void txt_Pesq_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_Pesq_usuarioActionPerformed
         // TODO add your handling code here:
+        pesquisar_usuario();
     }//GEN-LAST:event_txt_Pesq_usuarioActionPerformed
 
     private void txt_Pesq_usuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_Pesq_usuarioKeyReleased

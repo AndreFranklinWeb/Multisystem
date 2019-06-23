@@ -15,7 +15,16 @@ import net.proteanit.sql.DbUtils;
  * @author Andre Franklin
  */
 public class frm_EntraSai extends javax.swing.JInternalFrame {
-
+    
+    private static frm_EntraSai frm_entsai;
+    
+    public static frm_EntraSai getInstancia(){
+        if(frm_entsai == null){
+           frm_entsai = new frm_EntraSai(); 
+        }
+        return frm_entsai;
+    }
+    
     Connection conexao = null;
     PreparedStatement pst = null;
     ResultSet rs = null;
@@ -77,7 +86,6 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
                     txt_dataEntrada.setText(null);  
                     txt_dataSaida.setText(null);
                     tb_entsaiEquip.setModel(new DefaultTableModel(null, new String[]{"ID", "PATRIMÔNIO", "GERENCIA", "TIPO", "STATUS", "Nº CHAMADO", "DEFEITO", "DATA ENTRADA", "DATA SAIDA"}));
-                    txt_pesquisarPS.setText(null); 
                     txt_pesquisarPS.requestFocus();//Aponta cursor para o campo matricula.
                     
                 }
@@ -138,7 +146,7 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
 
         try {
             pst = conexao.prepareStatement(sql);
-
+            
             
             pst.setString(1, txt_patrominioPS.getText());
             pst.setString(2, txt_gerencia.getText().toUpperCase());            
@@ -169,10 +177,8 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
                 txt_dataEntrada.setText(null);  
                 txt_dataSaida.setText(null);
                 tb_entsaiEquip.setModel(new DefaultTableModel(null, new String[]{"ID", "PATRIMÔNIO", "GERENCIA", "TIPO", "STATUS", "Nº CHAMADO", "DEFEITO", "DATA ENTRADA", "DATA SAIDA"}));
-                txt_pesquisarPS.setText(null);
                 txt_pesquisarPS.requestFocus();//Aponta cursor para o campo matricula.
-                
-                
+                                
                 }
             }
         } catch (Exception e) {
@@ -195,8 +201,7 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
         tb_entsaiEquip.setModel(new DefaultTableModel(null, new String[]{"ID", "PATRIMÔNIO", "GERENCIA", "TIPO", "STATUS", "Nº CHAMADO", "DEFEITO", "DATA ENTRADA", "DATA SAIDA"}));
         txt_pesquisarPS.setText(null);
         txt_pesquisarPS.requestFocus();//Aponta cursor para o campo matricula.
-        
-        
+                
     }
 
     //---------------------------------------------------------------------------------------------------------------------------------    
@@ -459,6 +464,11 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
         }
         txt_idPS.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_idPS.setEnabled(false);
+        txt_idPS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_idPSActionPerformed(evt);
+            }
+        });
         getContentPane().add(txt_idPS);
         txt_idPS.setBounds(450, 30, 120, 30);
 
@@ -574,6 +584,10 @@ public class frm_EntraSai extends javax.swing.JInternalFrame {
     private void txt_patrominioPSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_patrominioPSActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_patrominioPSActionPerformed
+
+    private void txt_idPSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_idPSActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_idPSActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
